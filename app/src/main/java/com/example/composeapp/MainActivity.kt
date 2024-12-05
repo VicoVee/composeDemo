@@ -1,5 +1,6 @@
 package com.example.composeapp
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -25,16 +26,14 @@ import androidx.compose.ui.unit.sp
 import com.example.composeapp.ui.theme.ComposeAppTheme
 
 class MainActivity : ComponentActivity() {
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             ComposeAppTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Loser",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                Scaffold(modifier = Modifier.fillMaxSize()) {
+                    Counter()
                 }
             }
         }
@@ -42,40 +41,9 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    //var threat by remember {...}
-    var threat by rememberSaveable { mutableStateOf("Rest in Reeses Pieces") }
-    //When the threat is changed, the whole composable is recomposed (re-rendered)
-     val colors = listOf("Blue", "Red", "Green", "Yellow", "Purple", "Orange")
-
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = "Hello $name!\n \n $threat",
-            modifier = modifier,
-            fontSize = 35.sp,
-            lineHeight = 40.sp,
-            textAlign = androidx.compose.ui.text.style.TextAlign.Center
-        )
-        
-        //Outlined TextField
-        TextField(
-            value = threat,
-            onValueChange = { threat = it },
-            //A preview for the user to understand what to type in the field
-            label = { Text("Submit Death Threat") }
-        )
-g
-        for (color in colors) {
-            Button (
-                onClick = {}
-            ) {
-                Text(color)
-            }
-        }
+fun Counter() {
+    Column {
+        Button (onClick = {}) {}
     }
 }
 
@@ -83,6 +51,6 @@ g
 @Composable
 fun GreetingPreview() {
     ComposeAppTheme {
-        Greeting("Preview Me")
+        Counter()
     }
 }
