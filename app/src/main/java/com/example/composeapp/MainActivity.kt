@@ -45,6 +45,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     //var threat by remember {...}
     var threat by rememberSaveable { mutableStateOf("Rest in Reeses Pieces") }
     //When the threat is changed, the whole composable is recomposed (re-rendered)
+     val colors = listOf("Blue", "Red", "Green", "Yellow", "Purple", "Orange")
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -66,6 +67,8 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             //A preview for the user to understand what to type in the field
             label = { Text("Submit Death Threat") }
         )
+
+        for (color in colors) {Text(color)}
     }
 }
 
