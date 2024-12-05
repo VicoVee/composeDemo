@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -67,8 +68,14 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             //A preview for the user to understand what to type in the field
             label = { Text("Submit Death Threat") }
         )
-
-        for (color in colors) {Text(color)}
+g
+        for (color in colors) {
+            Button (
+                onClick = {}
+            ) {
+                Text(color)
+            }
+        }
     }
 }
 
